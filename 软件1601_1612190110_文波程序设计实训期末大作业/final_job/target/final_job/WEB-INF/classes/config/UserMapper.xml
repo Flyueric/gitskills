@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 用户的基本增删改查-->
+<mapper namespace="UserMapper">
+    <select id="selectAll" resultType="com.bovane.entity.User">
+    SELECT * FROM users
+  </select>
+  <!-- 以用户的账号密码查询-->
+    <select id="selectByNamePWD" parameterType="string" resultType="com.bovane.entity.User">
+    SELECT * FROM users where name=#{name} and password=#{password}
+  </select>
+</mapper>

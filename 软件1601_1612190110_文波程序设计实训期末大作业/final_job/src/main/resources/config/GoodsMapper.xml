@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--商品映射配置文件，包括商品的增删改查等基本功能-->
+<mapper namespace="GoodsMapper">
+    <select id="selectAll" resultType="com.bovane.entity.Goods">
+    SELECT * FROM goods order by id desc
+  </select>
+  <!-- 以id查询商品-->
+    <select id="selectByGoods" parameterType="int" resultType="com.bovane.entity.Goods">
+    SELECT * FROM goods where id=#{id}
+  </select>
+    <insert id="insertGoods" parameterType="com.bovane.entity.Goods">
+    insert into goods(goodsName,goodsPrice,stock,typeid,description)
+    values(#{goodsName},#{goodsPrice},#{stock},#{goodsType.id},#{description})
+  </insert>
+    <update id="updateGoods" parameterType="com.bovane.entity.Goods">
+   update goods set goodsPrice=#{goodsPrice},stock=#{stock},description=#{description} where id=#{id}
+  </update>
+    <delete id="deleteGoods" parameterType="int">
+  delete from goods where id=#{_parameter}
+  </delete>
+</mapper>

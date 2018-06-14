@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--商品类型映射配置文件，包括商品类型的增删改查等基本功能-->
+<mapper namespace="GoodsTypeMapper">
+    <select id="selectAll" resultType="com.bovane.entity.GoodsType">
+    SELECT * FROM goodstype order by id desc
+  </select>
+    <!-- 以类型名作为查询条件-->
+    <select id="selectByGoodsTypeID" parameterType="int" resultType="com.bovane.entity.GoodsType">
+    SELECT * FROM goodstype where id=#{_parameter}
+  </select>
+    <insert id="insertGoodsType" parameterType="com.bovane.entity.GoodsType">
+    insert into goodstype(name) values(#{name})
+  </insert>
+    <update id="updateGoodsType" parameterType="com.bovane.entity.GoodsType">
+   update goodstype set name=#{name} where id=#{id}
+  </update>
+    <delete id="deleteGoodsType" parameterType="int">
+  delete from goodstype where id=#{_parameter}
+  </delete>
+</mapper>
